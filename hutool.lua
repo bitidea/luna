@@ -1,9 +1,9 @@
 local hutool = {}
 
 --[[
-	格式化字符串，超过万的数字用万显示
-  参数 num 数字
-	返回值 "***万"字符串
+格式化字符串，超过万的数字用万显示
+参数 num 数字
+返回值 "***万"字符串
 ]]
 function hutool.formatNumberToWan(num)
     num = tonumber(num) or 0
@@ -15,10 +15,10 @@ function hutool.formatNumberToWan(num)
 end
 
 --[[
-	字符串分割
-  参数 fullString 需要分割的字符串
-  参数 separator 分隔符
-	返回值 表
+字符串分割
+参数 fullString 需要分割的字符串
+参数 separator 分隔符
+返回值 表
 ]]
 function hutool.stringSplit(fullString, separator)
     if fullString == nil or fullString == "" then
@@ -44,9 +44,9 @@ function hutool.stringSplit(fullString, separator)
 end
 
 --[[
-	时间戳转换为日期时间
-  参数 sec 时间戳字符串
-	返回值 字符串
+时间戳转换为日期时间
+参数 sec 时间戳字符串
+返回值 字符串
 ]]
 function hutool.convertTimestampToDateTime(sec)
     if sec == nil then
@@ -641,7 +641,7 @@ end
 --[[
 截取字符串
 参数 inputstr 要截取字符串
-参数 len  从0开始截取多少个字符
+参数 len从0开始截取多少个字符
 返回 截取到的字符串
 ]]
 function hutool.subString(inputstr, len)
@@ -709,7 +709,7 @@ function hutool.getStringLen(inputstr)
         if byteCount == 1 then
             width = width + 1
         else
-            width = width + 2  --中文算2个字符
+            width = width + 2--中文算2个字符
         end
     end
     return width
@@ -746,7 +746,7 @@ function hutool.hasEmoji(inputstr)
         if byteCount == 1 then
             width = width + 1
         else
-            width = width + 2  --中文算2个字符
+            width = width + 2--中文算2个字符
         end
 
         if byteCount > 3 then
@@ -794,7 +794,7 @@ function hutool.hasEmojiPro(inputstr)
         if byteCount == 1 then
             width = width + 1
         else
-            width = width + 2  --中文算2个字符
+            width = width + 2--中文算2个字符
         end
         if byteCount == 2 and emojiFlag then
             local secByte = string.byte(inputstr, 2)
@@ -857,7 +857,7 @@ function hutool.emojiPos(inputstr)
         if byteCount == 1 then
             width = width + 1
         else
-            width = width + 2  --中文算2个字符
+            width = width + 2--中文算2个字符
         end
         if byteCount > 3 then
             return i - byteCount
@@ -906,7 +906,7 @@ end
 
 
 --[[
-Unicode转Utf8
+Unicode 转 Utf8
 参数 convertStr 需要转换的字符串
 返回 转换后的字符串
 ]]
@@ -948,7 +948,7 @@ function hutool.convertUnicodeToUtf8(convertStr)
 end
 
 --[[
-Utf8转Unicode
+Utf8 转 Unicode
 参数 convertStr 需要转换的字符串
 返回 转换后的字符串
 ]]
@@ -1027,6 +1027,9 @@ function hutool.convertStringToArray(str, separator)
     return hutool.splitString(str, separator)
 end
 
+--[[
+删除字符串的最后一个字符
+]]
 function hutool.cutStringLast(str)
     if str ~= "" then
         str = string.sub(str, 1, -2)
@@ -1034,7 +1037,12 @@ function hutool.cutStringLast(str)
     return str or ""
 end
 
---比较table，相同返回true
+--[[
+比较 table
+tab1 表
+tab2 表
+相同返回true
+]]
 function hutool.compareTable(tab1, tab2)
     if tab1 == nil or tab2 == nil then
         return false
@@ -1049,6 +1057,10 @@ function hutool.compareTable(tab1, tab2)
     return true
 end
 
+--[[
+打印表
+tab 要打印的表
+]]
 function hutool.showTable(tab, space)
     if tab == nil or type(tab) ~= "table" then
         printE(nil, "show Table : nil table", tab, type(tab))
@@ -1057,7 +1069,7 @@ function hutool.showTable(tab, space)
     if space == nil then
         space = ""
     end
-    space = space .. "   "
+    space = space .. " "
     local count = 0
     for k, v in pairs(tab) do
         if type(v) == "table" then
@@ -1092,10 +1104,10 @@ function hutool.getIpAddressInfo(ipAddress)
 end
 
 
---[[*****************************************************************************
+--[[
 冒泡排序
 key排序的字段
-*********************************************************************************]]
+]]
 function hutool.bubbleSort(tab, key)
     if tab == nil or type(tab) ~= "table" or key == nil then
         printE("bubbleSort : tab or key is nil", tab, key)
@@ -1116,10 +1128,10 @@ function hutool.bubbleSort(tab, key)
     end
 end
 
---[[*****************************************************************************
+--[[
 反冒泡排序
 key排序的字段
-*********************************************************************************]]
+]]
 function hutool.antiBubbleSort(tab, key)
     if tab == nil or type(tab) ~= "table" or key == nil then
         printE("bubbleSort : tab or key is nil", tab, key)
@@ -1140,9 +1152,9 @@ function hutool.antiBubbleSort(tab, key)
     end
 end
 
---[[*****************************************************************************
+--[[
 深拷贝
-*********************************************************************************]]
+]]
 function hutool.deepCopy(st)
     if st == nil then
         return nil
@@ -1158,12 +1170,12 @@ function hutool.deepCopy(st)
     return tab
 end
 
---[[********************************************************************
+--[[
 比较时间字符串
-time1 		string 	YYYY-mm-dd HH:MM:SS
-time2 		string 	YYYY-mm-dd HH:MM:SS
-返回值 		int 	time1比time2多多少秒
-************************************************************************]]
+time1 string YYYY-mm-dd HH:MM:SS
+time2 string YYYY-mm-dd HH:MM:SS
+返回值 int time1比time2多多少秒
+]]
 function hutool.compareTime(time1, time2)
     if time1 == nil or time2 == nil then
         printE("compareTime args is nil", time1, time2)
@@ -1177,13 +1189,13 @@ function hutool.compareTime(time1, time2)
     return val
 end
 
---[[********************************************************************
+--[[
 比较时间字符串是否在startTime与endTime之间
-time 			string 	YYYY-mm-dd HH:MM:SS
-startTime 		string 	YYYY-mm-dd HH:MM:SS
-endTime 		string 	YYYY-mm-dd HH:MM:SS
-返回值 		bool
-************************************************************************]]
+time string YYYY-mm-dd HH:MM:SS
+startTime string YYYY-mm-dd HH:MM:SS
+endTime string YYYY-mm-dd HH:MM:SS
+返回值 bool
+]]
 function hutool.ifTimeInZone(time, startTime, endTime)
     if time == nil or startTime == nil or endTime == nil then
         printE("ifTimeInZone args is nil", time, startTime, endTime)
@@ -1205,11 +1217,11 @@ function hutool.ifTimeInZone(time, startTime, endTime)
 end
 
 
---[[********************************************************************
+--[[
 指定日期转为秒数
-date            string          日期  YYYY-mm-dd HH:MM::SS
-返回值          int             秒数
-************************************************************************]]
+date string YYYY-mm-dd HH:MM::SS
+返回值int 秒数
+]]
 function hutool.date2Sec(date)
     if date == nil then
         date = hutool.sec2Date()
@@ -1242,18 +1254,20 @@ function hutool.date2Sec(date)
     return t
 end
 
---jikan  YYYY-mm-dd HH:MM:SS
-function hutool.stringTime2DateTime(jikan)
+--[[
+stringTime string YYYY-mm-dd HH:MM:SS
+]]
+function hutool.stringTime2DateTime(stringTime)
     local Y = 0
     local m = 0
     local d = 0
     local H = 0
     local M = 0
     local S = 0
-    jikan = hutool.splitString(jikan, " ")
-    if #jikan == 2 then
-        local date = hutool.splitString(jikan[1], "-")
-        local time = hutool.splitString(jikan[2], ":")
+    stringTime = hutool.splitString(stringTime, " ")
+    if #stringTime == 2 then
+        local date = hutool.splitString(stringTime[1], "-")
+        local time = hutool.splitString(stringTime[2], ":")
         Y = date[1]
         m = date[2]
         d = date[3]
@@ -1261,30 +1275,34 @@ function hutool.stringTime2DateTime(jikan)
         M = time[2]
         S = time[3]
     end
-    if #jikan == 1 then
-        jikan = hutool.splitString(jikan[1], "-")
-        if #jikan == 1 then
-            local time = hutool.splitString(jikan[1], ":")
+    if #stringTime == 1 then
+        stringTime = hutool.splitString(stringTime[1], "-")
+        if #stringTime == 1 then
+            local time = hutool.splitString(stringTime[1], ":")
             H = time[1]
             M = time[2]
             S = time[3]
         else
-            Y = jikan[1]
-            m = jikan[2]
-            d = jikan[3]
+            Y = stringTime[1]
+            m = stringTime[2]
+            d = stringTime[3]
         end
     end
 
     return { year = Y, month = m, day = d, hour = H, minute = M, second = S }
 end
 
---jikan    int   秒
-function hutool.sec2DateTime(jikan)
-    jikan = hutool.sec2Date(jikan)
-    return hutool.stringTime2DateTime(jikan)
+--[[
+second int 秒
+]]
+function hutool.sec2DateTime(second)
+    second = hutool.sec2Date(second)
+    return hutool.stringTime2DateTime(second)
 end
 
---dateTime {year,month,day,hour,minute,second}
+--[[
+dateTime {year,month,day,hour,minute,second}
+]]
 function hutool.dateTime2StringTime(dateTime)
     local year = dateTime.year or "0000"
     local month = dateTime.month or "00"
@@ -1297,6 +1315,9 @@ function hutool.dateTime2StringTime(dateTime)
     return str
 end
 
+--[[
+
+]]
 function hutool.num2bool(num)
     num = math.floor(tonumber(num))
     if num == 0 then
@@ -1305,6 +1326,9 @@ function hutool.num2bool(num)
     return true
 end
 
+--[[
+
+]]
 function hutool.string2bool(str)
     if str == "true" then
         return true
@@ -1312,6 +1336,9 @@ function hutool.string2bool(str)
     return false
 end
 
+--[[
+
+]]
 function hutool.redisTable2LuaTable(res)
     if #res > 0 then
         local rtab = { }
@@ -1328,6 +1355,9 @@ function hutool.redisTable2LuaTable(res)
     return nil
 end
 
+--[[
+
+]]
 function hutool.redisTable2LuaTable2(res)
     if #res > 0 then
         local list = { }
@@ -1350,6 +1380,9 @@ function hutool.redisTable2LuaTable2(res)
     return nil
 end
 
+--[[
+
+]]
 function hutool.isNumber(str)
     if tonumber(str) == nil then
         return false
@@ -1357,6 +1390,9 @@ function hutool.isNumber(str)
     return true
 end
 
+--[[
+
+]]
 function hutool.safe2Num(str)
     if tonumber(str) == nil then
         return str
@@ -1364,6 +1400,9 @@ function hutool.safe2Num(str)
     return tonumber(str)
 end
 
+--[[
+
+]]
 function hutool.safeTable2Num(tab)
     if tab == nil or type(tab) ~= "table" then
         printE("safeTable2Num : nil table", tab)
@@ -1385,7 +1424,7 @@ function hutool.safeTable2Num(tab)
 end
 
 --[[
-	从一个table中删除指定的值
+从一个table中删除指定的值
 ]]
 function hutool.removeFromTable(src, vals)
     local delkey = {}
@@ -1409,8 +1448,10 @@ function hutool.removeFromTable(src, vals)
     return res
 end
 
---定期清理内存
---log   输出文本
+--[[
+定期清理内存
+log 输出文本
+]]
 function hutool.cleanMem(log)
     if h.cleanMemFlag == false then
         return
@@ -1424,7 +1465,9 @@ function hutool.cleanMem(log)
     end)
 end
 
---table元素去重
+--[[
+table元素去重
+]]
 function hutool.tableDuplicate(tab)
     local tmp = {}
     for k, v in pairs(tab) do
@@ -1438,7 +1481,9 @@ function hutool.tableDuplicate(tab)
 end
 
 
---读取文件内容
+--[[
+读取文件内容
+]]
 function hutool.readFile(path)
     local file = io.open(path, "r")
     local data = ""
@@ -1458,21 +1503,27 @@ function hutool.readFile(path)
     return data
 end
 
---获取路径
+--[[
+获取路径
+]]
 function hutool.getFilePath(filename)
     filename = filename or ""
     return string.match(filename, "(.+)/[^/]*%.%w+$") --*nix system
     --return string.match(filename, “(.+)\\[^\\]*%.%w+$”) — windows
 end
 
---获取文件名
+--[[
+获取文件名
+]]
 function hutool.getFileName(filename)
     filename = filename or ""
     return string.match(filename, ".+/([^/]*%.%w+)$") -- *nix system
     --return string.match(filename, “.+\\([^\\]*%.%w+)$”) — *nix system
 end
 
---去除扩展名
+--[[
+去除扩展名
+]]
 function hutool.getFileNameWithoutExtension(filename)
     filename = filename or ""
     local idx = filename:match(".+()%.%w+$")
@@ -1483,17 +1534,19 @@ function hutool.getFileNameWithoutExtension(filename)
     end
 end
 
---获取扩展名
+--[[
+获取扩展名
+]]
 function hutool.getFileExtension(filename)
     filename = filename or ""
     return filename:match(".+%.(%w+)$")
 end
 
---[[*****************************************************************************
---mysql结果安全判断
---tab：      table           表
---返回值：   bool    是否安全
-******************************************************************************]]
+--[[
+mysql结果安全判断
+tab：table 表
+返回值： bool是否安全
+]]
 function hutool.dbSafeCheck(sqlres)
     if sqlres == nil then
         printE("dbSafeCheck : sqlres is nil")
@@ -1507,7 +1560,9 @@ function hutool.dbSafeCheck(sqlres)
 end
 
 
---字符串与16进制互转
+--[[
+字符串与16进制互转
+]]
 function hutool.bin2hex(s)
     s = string.gsub(s, "(.)", function(x)
         return string.format("%02x", string.byte(x))
@@ -1515,6 +1570,9 @@ function hutool.bin2hex(s)
     return s
 end
 
+--[[
+
+]]
 function hutool.hex2bin(hexstr)
     local h2b = {
         ["0"] = 0,
@@ -1541,7 +1599,9 @@ function hutool.hex2bin(hexstr)
     return s
 end
 
---将字符串按格式转为16进制串
+--[[
+将字符串按格式转为16进制串
+]]
 function hutool.str2hex(hex)
     --判断输入类型
     if (type(hex) ~= "string") then
@@ -1557,7 +1617,9 @@ function hutool.str2hex(hex)
     return ret
 end
 
---将16进制串转换为字符串
+--[[
+将16进制串转换为字符串
+]]
 function hutool.hex2str(str)
     --判断输入类型
     if (type(str) ~= "string") then
@@ -1621,8 +1683,8 @@ end
 
 --[[*****************************************************************************
 --表转json字符串
---tab：      table           表
---返回值：   string          json字符串
+--tab：table 表
+--返回值： stringjson字符串
 ******************************************************************************]]
 function hutool.table2Json(tab)
     if tab == nil or type(tab) ~= "table" then
@@ -1638,6 +1700,9 @@ function hutool.table2Json(tab)
     return val
 end
 
+--[[
+
+]]
 function hutool.cjsonEncode(tab)
     if tab == nil or type(tab) ~= "table" then
         printE("cjsonEncode : tab is nil", tab, type(tab))
@@ -1652,11 +1717,11 @@ function hutool.cjsonEncode(tab)
     return val
 end
 
---[[*****************************************************************************
---json字符串转表
---text：      string         json字符串
---返回值：   table          表
-******************************************************************************]]
+--[[
+json字符串转表
+text：string json字符串
+返回值： table表
+]]
 function hutool.json2Table(text)
     if text == nil then
         printE("json2Table : text is nil", text, type(text))
@@ -1672,6 +1737,9 @@ function hutool.json2Table(text)
     return val
 end
 
+--[[
+
+]]
 function hutool.cjsonDecode(text)
     if text == nil then
         printE("json2Table : text is nil", text, type(text))
@@ -1686,11 +1754,12 @@ function hutool.cjsonDecode(text)
     end
     return val
 end
---[[*****************************************************************************
---xml字符串转表
---text：      string         xml字符串
---返回值：   table          表
-******************************************************************************]]
+
+--[[
+xml字符串转表
+text：string xml字符串
+返回值： table表
+]]
 function hutool.xml2Table(text)
     if text == nil then
         printE("xml2Table : text is nil", text, type(text))
@@ -1706,11 +1775,11 @@ function hutool.xml2Table(text)
     return val
 end
 
---[[*****************************************************************************
+--[[
 根据成功率随机获得是否成功
-successRate    int   (0~100) 成功率
-返回值   bool  是否成功
-******************************************************************************]]
+successRateint (0~100) 成功率
+返回值 bool是否成功
+]]
 function hutool.isSuccess(successRate)
     if type(successRate) ~= "number" then
         return false
@@ -1726,12 +1795,12 @@ function hutool.isSuccess(successRate)
     return false
 end
 
---[[*****************************************************************************
---判断两个时间是否在同一天
---参数 time1  "YYYY-MM-DD hh:mm:ss"
---参数 time2  "YYYY-MM-DD hh:mm:ss"
+--[[
+判断两个时间是否在同一天
+参数 time1"YYYY-MM-DD hh:mm:ss"
+参数 time2"YYYY-MM-DD hh:mm:ss"
 return bool
-******************************************************************************]]
+]]
 function hutool.isSameDay(time1, time2)
     time1 = hutool.date2Sec(os.date("%Y-%m-%d 00:00:00", hutool.date2Sec(time1)))
     time2 = hutool.date2Sec(os.date("%Y-%m-%d 00:00:00", hutool.date2Sec(time2)))
@@ -1750,6 +1819,7 @@ function hutool.urlEncode(s)
     end)
     return string.gsub(s, " ", "+")
 end
+
 --[[
 urlEncode 解码
 ]]
@@ -1761,11 +1831,11 @@ function hutool.urlDecode(s)
     return s
 end
 
---[[*****************************************************************************
---table 转 url 字符串
---tab      string         表
---返回值：   string          url字符串
-******************************************************************************]]
+--[[
+table 转 url 字符串
+tabstring 表
+返回值： stringurl字符串
+]]
 function hutool.table2Url(tab, split, symbol)
     if tab == nil or type(tab) ~= "table" then
         printE("table2Url args is nil", tab)
@@ -1789,11 +1859,11 @@ function hutool.table2Url(tab, split, symbol)
     return str
 end
 
---[[*****************************************************************************
---url字符串转表
---url      string         url字符串
---返回值：   table          表
-******************************************************************************]]
+--[[
+url字符串转表
+urlstring url字符串
+返回值： table表
+]]
 function hutool.url2Table(url)
     if url == "" or url == nil then
         return {}
@@ -1821,6 +1891,9 @@ function hutool.url2Table(url)
     return res
 end
 
+--[[
+
+]]
 function hutool.findString(str, findStr)
     if hutool.isStringEmpty(str) == true or hutool.isStringEmpty(findStr) == true then
         return false
@@ -1833,11 +1906,11 @@ function hutool.findString(str, findStr)
     return false
 end
 
---[[*****************************************************************************
---url字符串转表
---url      string         url字符串
---返回值：   table          表
-******************************************************************************]]
+--[[
+url字符串转表
+urlstring url字符串
+返回值： table表
+]]
 function hutool.urlParam2Table(url, split, symbol)
     if url == "" or url == nil then
         return {}
@@ -1857,11 +1930,11 @@ function hutool.urlParam2Table(url, split, symbol)
     return res
 end
 
---[[*****************************************************************************
---url字符串转表
---url      string         url字符串
---返回值：   table          表
-******************************************************************************]]
+--[[
+url字符串转表
+urlstring url字符串
+返回值： table表
+]]
 function hutool.urlParam2Table2Num(url)
     local tab = hutool.urlParam2Table(url)
     local res = {}
@@ -1874,11 +1947,11 @@ function hutool.urlParam2Table2Num(url)
     return res
 end
 
---[[*****************************************************************************
---url字符串转itemStruct
---url      string         url字符串
---返回值：   table          表
-******************************************************************************]]
+--[[
+url字符串转itemStruct
+urlstring url字符串
+返回值： table表
+]]
 function hutool.urlParam2ItemStruct(url)
     if url == "" or url == nil then
         return {}
@@ -1893,9 +1966,9 @@ function hutool.urlParam2ItemStruct(url)
     return res
 end
 
---[[*****************************************************************************
+--[[
 字符串是否为空
-******************************************************************************]]
+]]
 function hutool.isStringEmpty(str)
     if str == "" or str == nil then
         return true
@@ -1904,9 +1977,9 @@ function hutool.isStringEmpty(str)
     return false
 end
 
---[[*****************************************************************************
+--[[
 table是否为空
-******************************************************************************]]
+]]
 function hutool.isTableEmpty(tab)
     if tab == nil or type(tab) ~= "table" then
         return true
@@ -1937,7 +2010,9 @@ function hutool.isExistsInTable(list, value)
     return false
 end
 
---转整形
+--[[
+转整形
+]]
 function hutool.toInt(val)
     if val == nil or tonumber(val) == nil then
         return 0
@@ -1946,7 +2021,9 @@ function hutool.toInt(val)
     return math.floor(tonumber(val))
 end
 
---判断是否是数字
+--[[
+判断是否是数字
+]]
 function hutool.isNumber(num)
     if tonumber(num) == nil then
         return false
@@ -2048,8 +2125,7 @@ end
 
 --[[
 fileds string * aaa,bbb,ccc
-where  string  where userID=123 and userName='aaa' limit 1
-
+wherestringwhere userID=123 and userName='aaa' limit 1
 ]]
 function hutool.createFullSelectSql(tableName, fileds, where)
     local sql = string.format("select %s from %s ", fileds, tableName)
@@ -2083,11 +2159,11 @@ end
 
 
 
---[[*****************************************************************************
---解析Json文件
---json：     string          json字符串
---返回值：   table/nil       解析后的结果
-******************************************************************************]]
+--[[
+解析Json文件
+json： stringjson字符串
+返回值： table/nil 解析后的结果
+]]
 function hutool.DecodeLKJson(json)
     if json == nil or json == "" then
         printE("json is nil")
@@ -2109,6 +2185,10 @@ function hutool.DecodeLKJson(json)
 
     return val, { RetCode = "", RetMsg = "" }
 end
+
+--[[
+
+]]
 function hutool.decodeLkJsonTable(lktable)
     if lktable == nil then
         return nil
@@ -2127,7 +2207,9 @@ function hutool.decodeLkJsonTable(lktable)
     return res
 end
 
---判断与今天是否相隔超过1天
+--[[
+判断与今天是否相隔超过1天
+]]
 function hutool.overOneDay(date)
     --获得当前日期
     local nowY = os.date("%Y", os.time())
@@ -2189,12 +2271,16 @@ function hutool.getIdCardAge(data)
     end
 end
 
---开始计时
+--[[
+开始计时
+]]
 function hutool.startStopWatch()
     return { start = os.time() }
 end
 
---停止计时
+--[[
+停止计时
+]]
 function hutool.stopStopWatch(stopWatch, text)
     if stopWatch == nil then
         stopWatch = { start = os.time() }
@@ -2202,19 +2288,17 @@ function hutool.stopStopWatch(stopWatch, text)
     printE(nil, tostring(text), os.time() - stopWatch.start)
 end
 
---[[*****************************************************************************
+--[[
 --打印调用堆栈
-******************************************************************************]]
+]]
 function hutool.showDebugStack()
     printE(debug.traceback())
 end
 
---[[*****************************************************************************
+--[[
 功能描述：获取系统日期和时间
 参数：无
-
-时间：2015.10.1
-*********************************************************************************]]
+]]
 function hutool.getTime()
     local tabTime = os.date("*t", time)
     local formatTime = ""
@@ -2223,12 +2307,10 @@ function hutool.getTime()
     return formatTime
 end
 
---[[*****************************************************************************
+--[[
 功能描述：获取系统日期
 参数：无
-
-时间：2015.10.1
-*********************************************************************************]]
+]]
 function hutool.getDate()
     local tabTime = os.date("*t", time)
     local formatDate = ""
@@ -2237,12 +2319,10 @@ function hutool.getDate()
     return formatDate
 end
 
---[[*****************************************************************************
+--[[
 功能描述：获取系统日期和时间
 参数：无
-
-时间：2015.10.1
-*********************************************************************************]]
+]]
 function hutool.getTimeRaw()
     local tabTime = os.date("*t", time)
     local formatTime = ""
@@ -2251,15 +2331,13 @@ function hutool.getTimeRaw()
     return formatTime
 end
 
---[[*****************************************************************************
+--[[
 功能描述：写日志
-参数说明：1、fileName:文件名;  2、日志内容
-
-时间：2015.10.9
-*********************************************************************************]]
+参数说明：1、fileName:文件名;2、日志内容
+]]
 function hutool.writeLog(fileName, ...)
     if "string" ~= type(fileName) then
-        print("  ERROR writeLog: fileName is not string.")
+        print("ERROR writeLog: fileName is not string.")
         return
     end
     local path = "./log/" .. fileName .. ".log"
@@ -2277,7 +2355,7 @@ end
 ]]
 function hutool.writeFile(fileName, str)
     if "string" ~= type(fileName) then
-        print("  ERROR writeLog: fileName is not string.")
+        print("ERROR writeLog: fileName is not string.")
         return
     end
     local path = fileName
@@ -2288,15 +2366,13 @@ function hutool.writeFile(fileName, str)
     end
 end
 
---[[*****************************************************************************
+--[[
 功能描述：写消息日志 模式为w+ 换行符
-参数说明：1、fileName:文件名;  2、日志内容
-
-时间：2016.12.14
-*********************************************************************************]]
+参数说明：1、fileName:文件名;2、日志内容
+]]
 function hutool.writeMsgLog(fileName, ...)
     if "string" ~= type(fileName) then
-        print("  ERROR writeLog: fileName is not string.")
+        print("ERROR writeLog: fileName is not string.")
         return
     end
     local path = "./log/" .. fileName .. ".log"
@@ -2308,7 +2384,9 @@ function hutool.writeMsgLog(fileName, ...)
     end
 end
 
---------------------------Begin: 队列模板-------------------------------
+--[[
+Queue
+]]
 local Queue = {}
 function Queue.new(maxLen)
     if nil ~= maxLen and "number" == type(maxLen) and maxLen > 0 then
@@ -2318,7 +2396,9 @@ function Queue.new(maxLen)
     end
 end
 
-----向队列尾添加元素
+--[[
+向队列尾添加元素
+]]
 function Queue.push_last(queue, value)
     if (queue.last - queue.first + 1) > queue.maxLen then
         --队列满
@@ -2330,7 +2410,10 @@ function Queue.push_last(queue, value)
     queue[last] = value
     return 0
 end
-----弹出队列头
+
+--[[
+弹出队列头
+]]
 function Queue.pop_first(queue)
     local first = queue.first
     if first > queue.last then
@@ -2344,6 +2427,9 @@ function Queue.pop_first(queue)
     return value
 end
 
+--[[
+
+]]
 function Queue.isEmpty(queue)
     if queue.first > queue.last then
         --队列空
@@ -2352,6 +2438,9 @@ function Queue.isEmpty(queue)
     return false
 end
 
+--[[
+
+]]
 function Queue.isFull(queue)
     if nil == queue.maxLen then
         return false
@@ -2364,28 +2453,34 @@ function Queue.isFull(queue)
     return false
 end
 
+--[[
+
+]]
 function Queue.getLen(queue)
     return queue.last - queue.first + 1
 end
 
+--[[
+
+]]
 function Queue.getMaxLen(queue)
     return queue.maxLen
 end
 
+--[[
+]]
 function Queue.setMaxLen(queue, maxLen)
     queue.maxLen = maxLen
 end
 
 hutool.Queue = Queue
---------------------------End : 队列模板-------------------------------
 
 
---[[*****************************************************************************
+--[[
 功能描述：比较时间
-参数：time1,time2   格式 os.date("%Y-%m-%d %H:%M:%S", os.time())
-
-返回：true : time1 > time2    false : time1 <= time2
-*********************************************************************************]]
+参数：time1,time2 格式 os.date("%Y-%m-%d %H:%M:%S", os.time())
+返回：true : time1 > time2false : time1 <= time2
+]]
 function hutool.compareTimes(time1, time2)
 
     local y1, mon1, d1 = string.match(time1, "(%d+)-(%d+)-(%d+)")
@@ -2400,9 +2495,9 @@ function hutool.compareTimes(time1, time2)
     return temp1 > temp2
 end
 
---[[*****************************************************************************
+--[[
 根据userID创建伪随机的编号
-*********************************************************************************]]
+]]
 function hutool.getFakeRandomUserCode(userID)
     local bitlen = 26
     local bit = { data = {} }
@@ -2421,7 +2516,7 @@ function hutool.getFakeRandomUserCode(userID)
             end
         end
         return tr
-    end   --bit:d2b
+    end --bit:d2b
 
     function bit:b2d(arg)
         local nr = 0
@@ -2431,7 +2526,7 @@ function hutool.getFakeRandomUserCode(userID)
             end
         end
         return nr
-    end   --bit:b2d
+    end --bit:b2d
 
     function bit:_xor(a, b)
         local op1 = self:d2b(a)
@@ -2558,9 +2653,9 @@ function hutool.getFakeRandomUserCode(userID)
     return math.floor(tonumber(bit:b2d(arr)) + 10000000)--凑齐8为数
 end
 
---[[*****************************************************************************
+--[[
 根据伪随机号推算出userID
-*********************************************************************************]]
+]]
 function hutool.getUserIDByCode(code)
     local bitlen = 26
     local bit = { data = {} }
@@ -2579,7 +2674,7 @@ function hutool.getUserIDByCode(code)
             end
         end
         return tr
-    end   --bit:d2b
+    end --bit:d2b
 
     function bit:b2d(arg)
         local nr = 0
@@ -2589,7 +2684,7 @@ function hutool.getUserIDByCode(code)
             end
         end
         return nr
-    end   --bit:b2d
+    end --bit:b2d
 
     function bit:_xor(a, b)
         local op1 = self:d2b(a)
@@ -2760,7 +2855,9 @@ function hutool.convertUtf8(str)
     return string.gsub(str, '&#(%d+);', to_utf8)
 end
 
---获得utf8长度
+--[[
+获得utf8长度
+]]
 function hutool.getUtf8Len(input)
     local len = string.len(input)
     local left = len
@@ -2781,7 +2878,9 @@ function hutool.getUtf8Len(input)
     return cnt
 end
 
---是否包含中文
+--[[
+是否包含中文
+]]
 function hutool.hasChinese(str)
     if str == nil then
         return false
@@ -2798,6 +2897,9 @@ function hutool.hasChinese(str)
     return false
 end
 
+--[[
+
+]]
 function hutool.checkChineseName(str)
     if str == nil then
         return false
@@ -2813,7 +2915,7 @@ function hutool.checkChineseName(str)
         --判断是否全部为中文
         for i = 1, #str, 3 do
             local tmp = string.byte(str, i)
-            print(" ----   ----", tmp)--230
+            print(" ---- ----", tmp)--230
             if tmp >= 240 or tmp < 224 then
                 return false
             end
@@ -2850,12 +2952,11 @@ function hutool.checkChineseName(str)
     return false
 end
 
---[[*****************************************************************************
+--[[
 功能描述：读取外部json文件
 参数：path 文件路径
-
 返回：jsonData or nil
-*********************************************************************************]]
+]]
 function hutool.readJsonFile(path)
 
     if "string" ~= type(path) then
@@ -2906,7 +3007,9 @@ end
 
 
 
--- 反转table
+--[[
+反转table
+]]
 function hutool.tableReverse (list)
     local tp = {}
     local index = 1
@@ -2917,6 +3020,9 @@ function hutool.tableReverse (list)
     return tp
 end
 
+--[[
+
+]]
 function hutool.randomBool(current, max)
     if current <= 0 then
         return false
@@ -2932,10 +3038,9 @@ function hutool.randomBool(current, max)
     end
 end
 
---[[********************************************************************
-函数名：  containsKeyValue
-功能描述：查询table是否包含指定的键值对
-************************************************************************]]
+--[[
+查询table是否包含指定的键值对
+]]
 function hutool.containsKeyValue(table, key, value)
     local containsKey = false
     for i = 1, #table do
@@ -2948,6 +3053,9 @@ function hutool.containsKeyValue(table, key, value)
     return containsKey
 end
 
+--[[
+
+]]
 function hutool.valueJuege(obj, desc)
     desc = desc or ""
     if obj then
@@ -2957,11 +3065,9 @@ function hutool.valueJuege(obj, desc)
     end
 end
 
---[[********************************************************************
-函数名称:checkTimeFormat
-功能描述：检查日期格式  y-m-d H:M:S  格式为true 其他格式为false
-作者：yuchao.Lv
-************************************************************************]]
+--[[
+检查日期格式y-m-d H:M:S格式为true 其他格式为false
+]]
 function hutool.checkTimeFormat(time)
     if not time then
         printE("checkTimeFormat time is nil ")
@@ -2977,22 +3083,22 @@ function hutool.checkTimeFormat(time)
 end
 
 --[[
-	处理 x-www-form-urlencoded 类型数据，并自动urldecode
+处理 x-www-form-urlencoded 类型数据，并自动urldecode
 ]]
 function hutool.parseUrlencoded(form)
     local t = {}
     local arr = hutool.splitString(form, "&")
     for k, v in pairs(arr) do
         local dataArr = hutool.splitString(v, "=")
-        t[dataArr[1]] = hutool.urlDecode(dataArr[2])  --要先将+替代成空格
+        t[dataArr[1]] = hutool.urlDecode(dataArr[2])--要先将+替代成空格
     end
     return t
 end
 
 --[[
-	获取日期前后几天的日期
-	自定义一个函数，time为指定的日期格式YYYY-MM-DD，
-  dayChange为指定日期前后天数，用法：前一天 -1 后一天 1.
+获取日期前后几天的日期
+自定义一个函数，time为指定的日期格式YYYY-MM-DD，
+dayChange为指定日期前后天数，用法：前一天 -1 后一天 1.
 ]]
 function hutool.dateChange(time, dayChange)
     local year = string.sub(time, 0, 4);--年份
@@ -3004,10 +3110,9 @@ end
 
 --[[
 检查特殊屏蔽字符
-1圆/园/员/快/毛/yuan   （1等数字前缀）
+1圆/园/员/快/毛/yuan （1等数字前缀）
 一圆/园/员/快/毛/yuan （一等数字前缀）
-壹圆/园/员/快/毛/yuan  （壹等数字前缀）
-$
+壹圆/园/员/快/毛/yuan（壹等数字前缀）
 ]]
 function hutool.checkSpecailBannedWords(data)
     if type(data) ~= "string" then
