@@ -1681,11 +1681,11 @@ function hutool.table2Xml(tab)
     return table.concat(newtab)
 end
 
---[[*****************************************************************************
+--[[
 --表转json字符串
 --tab：table 表
 --返回值： stringjson字符串
-******************************************************************************]]
+]]
 function hutool.table2Json(tab)
     if tab == nil or type(tab) ~= "table" then
         printE("table2Json : tab is nil", tab, type(tab))
