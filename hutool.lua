@@ -1,4 +1,4 @@
-local hutool = {}
+local luna = {}
 
 --[[
 格式化字符串，超过万的数字用万显示
